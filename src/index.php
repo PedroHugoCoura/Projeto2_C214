@@ -1,4 +1,6 @@
 <?php
+
+namespace App;
 session_start();
 
 function calcularIMC($peso, $altura) {
@@ -15,7 +17,6 @@ function classificarIMC($imc) {
     if ($imc >= 30) return "Obesidade";
 }
 
-// processa o formulário
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['calcular'])) {
     $peso = (float)$_POST['peso'];
     $altura = (float)$_POST['altura'];
@@ -29,7 +30,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['calcular'])) {
         'categoria' => $categoria
     ];
 
-    // salva no histórico calculo novo
     if (!isset($_SESSION['historico'])) {
         $_SESSION['historico'] = [];
     }
@@ -41,7 +41,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['calcular'])) {
     exit();
 }
 
-// limpa histórico
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['limpar'])) {
     $_SESSION['historico'] = [];
     header("Location: index.php");
