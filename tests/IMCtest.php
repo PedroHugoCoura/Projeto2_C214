@@ -1,15 +1,14 @@
 <?php
 namespace Test;
 use PHPUnit\Framework\TestCase;
-use App;  // Importe o namespace onde calcularIMC foi definido
+use App;
 
-require_once dirname(__DIR__) . '/src/index.php';  // Caminho correto
+require_once dirname(__DIR__) . '/src/index.php';
 
 class IMCTest extends TestCase {
    
-    // Testes de Sucesso
     public function testCalculoIMCSucesso() {
-        $imc = App\calcularIMC(70, 1.75);  // Chamada com o namespace correto
+        $imc = App\calcularIMC(70, 1.75);  
         $this->assertEquals(22.86, number_format($imc, 2));
     }
 
@@ -33,7 +32,6 @@ class IMCTest extends TestCase {
         $this->assertEquals("Obesidade", $categoria);
     }
     
-    // Testes de Falha
     public function testCalculoIMCAlturaZero() {
         $imc = App\calcularIMC(70, 0);
         $this->assertEquals(0, $imc);
@@ -43,7 +41,7 @@ class IMCTest extends TestCase {
         $imc = App\calcularIMC(70, -1.75);
         $this->assertEquals(0, $imc);
     }
-        
+
     public function testCalculoIMCPesoZero() {
         $imc = App\calcularIMC(0, 1.75);
         $this->assertEquals(0, $imc);
