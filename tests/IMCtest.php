@@ -43,12 +43,7 @@ class IMCTest extends TestCase {
         $imc = App\calcularIMC(70, -1.75);
         $this->assertEquals(0, $imc);
     }
-    
-    // public function testCalculoIMCPesoNegativo() {
-    //     $imc = App\calcularIMC(-70, 1.75);
-    //     $this->assertEquals(0, $imc);
-    // }
-    
+        
     public function testCalculoIMCPesoZero() {
         $imc = App\calcularIMC(0, 1.75);
         $this->assertEquals(0, $imc);
