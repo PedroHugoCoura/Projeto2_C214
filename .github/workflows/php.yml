@@ -19,7 +19,7 @@ jobs:
       - name: Set up PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-version: '8.12.2'
+          php-version: '8.1'
 
       - name: Install dependencies
         run: |
@@ -41,7 +41,7 @@ jobs:
   build:
     name: Package Software
     runs-on: ubuntu-latest
-    needs: test  # Garante que o job 'build' só roda se o job 'test' for bem-sucedido
+    needs: test 
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -49,8 +49,9 @@ jobs:
       - name: Set up PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-version: '8.1'
- - name: Install dependencies
+          php-version: '8.12.2'
+
+      - name: Install dependencies
         run: |
           sudo apt-get update
           sudo apt-get install -y unzip
