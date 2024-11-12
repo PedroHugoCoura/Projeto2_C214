@@ -33,7 +33,7 @@ jobs:
           ./vendor/bin/phpunit --log-junit test-report.xml
 
       - name: Upload test reports as artifact
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: phpunit-test-report
           path: test-report.xml
@@ -64,7 +64,7 @@ jobs:
           tar -czvf my-software-package.tar.gz ./src
 
       - name: Upload software package as artifact
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: my-software-package
           path: my-software-package.tar.gz
