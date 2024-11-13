@@ -19,3 +19,6 @@
 [submodule "vendor/phpunit/php-invoker"]
     path = vendor/phpunit/php-invoker
     url = https://github.com/sebastianbergmann/php-invoker.git
+[submodule "vendor/phpunit/php-text-template"]
+    path = vendor/phpunit/php-text-template
+    url = https://github.com/sebastianbergmann/php-text-template.git
