@@ -29,6 +29,8 @@ jobs:
           php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
           php composer-setup.php
           php -r "unlink('composer-setup.php');"
+          composer require --dev phpunit/phpunit
+          composer clear-cache
           composer install
 
       - name: Run PHPUnit tests
