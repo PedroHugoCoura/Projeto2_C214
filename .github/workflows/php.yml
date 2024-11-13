@@ -32,9 +32,8 @@ jobs:
           composer clear-cache
           composer require --dev phpunit/phpunit
           composer install -vvv
-          composer update sebastian/type
-
-
+          composer update --with-all-dependencies
+          
       - name: Run PHPUnit tests
         run: |
           ./vendor/bin/phpunit ./tests/IMCtest.php --log-junit test-report.xml
