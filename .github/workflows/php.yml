@@ -9,41 +9,41 @@ on:
       - main
 
 jobs:
-#   test:
-#     name: Run PHPUnit Tests
-#     runs-on: ubuntu-latest
-#     steps:
-#       - name: Checkout code
-#         uses: actions/checkout@v2
+  test:
+    name: Run PHPUnit Tests
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
 
-#       - name: Set up PHP
-#         uses: shivammathur/setup-php@v2
-#         with:
-#           php-version: '8.14.2'
+      - name: Set up PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.14.2'
 
-#       - name: Install dependencies
-#         run: |
-#           sudo apt-get update
-#           sudo apt-get install -y unzip
-#           sudo apt install php libapache2-mod-php php-cli php-mbstring php-xml php-curl php-zip php-gd
-#           php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
-#           php composer-setup.php
-#           php -r "unlink('composer-setup.php');"
-#           composer clear-cache
-#           composer require --dev phpunit/phpunit
-#           composer install -vvv
-#           composer update sebastian/type
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y unzip
+          sudo apt install php libapache2-mod-php php-cli php-mbstring php-xml php-curl php-zip php-gd
+          php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
+          php composer-setup.php
+          php -r "unlink('composer-setup.php');"
+          composer clear-cache
+          composer require --dev phpunit/phpunit
+          composer install -vvv
+          composer update sebastian/type
 
 
-#       - name: Run PHPUnit tests
-#         run: |
-#           ./vendor/bin/phpunit ./tests/IMCtest.php --log-junit test-report.xml
+      - name: Run PHPUnit tests
+        run: |
+          ./vendor/bin/phpunit ./tests/IMCtest.php --log-junit test-report.xml
 
-#       - name: Upload test reports as artifact
-#         uses: actions/upload-artifact@v3
-#         with:
-#           name: phpunit-test-report
-#           path: test-report.xml
+      - name: Upload test reports as artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: phpunit-test-report
+          path: test-report.xml
 
   build:
     name: Package Software
