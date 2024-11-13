@@ -13,3 +13,6 @@
 [submodule "vendor/phpunit/php-code-coverage"]
     path = vendor/phpunit/php-code-coverage
     url = https://github.com/sebastianbergmann/php-code-coverage.git
+[submodule "vendor/phpunit/php-file-iterator"]
+    path = vendor/phpunit/php-file-iterator
+    url = https://github.com/sebastianbergmann/php-file-iterator.git
