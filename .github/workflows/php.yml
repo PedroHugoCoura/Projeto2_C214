@@ -32,6 +32,8 @@ jobs:
           composer clear-cache
           composer require --dev phpunit/phpunit
           composer install -vvv
+          composer update sebastian/type
+
 
       - name: Run PHPUnit tests
         run: |
