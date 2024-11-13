@@ -21,7 +21,7 @@ jobs:
         with:
           php-version: '8.14.2'
 
-      - name: Install dependencies
+      - name: Install dependenciess
         run: |
           sudo apt-get update
           sudo apt-get install -y unzip
@@ -33,7 +33,7 @@ jobs:
           composer require --dev phpunit/phpunit
           composer install -vvv
           composer update --with-all-dependencies
-          
+
       - name: Run PHPUnit tests
         run: |
           ./vendor/bin/phpunit ./tests/IMCtest.php --log-junit test-report.xml
