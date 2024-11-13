@@ -25,3 +25,9 @@
 [submodule "vendor/phpunit/php-timer"]
 path = vendor/phpunit/php-timer
 url = https://github.com/sebastianbergmann/php-timer.git
+[submodule "vendor/phpunit/phpunit"]
+    path = vendor/phpunit/phpunit
+    url = https://github.com/sebastianbergmann/phpunit.git
+[submodule "vendor/sebastian/cli-parser"]
+    path = vendor/sebastian/cli-parser
+    url = https://github.com/sebastianbergmann/cli-parser.git
