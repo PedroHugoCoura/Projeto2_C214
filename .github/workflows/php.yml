@@ -31,7 +31,6 @@ jobs:
           php -r "unlink('composer-setup.php');"
           composer clear-cache
           composer require --dev phpunit/phpunit
-          composer install --prefer-dist
           composer install -vvv
 
       - name: Run PHPUnit tests
