@@ -79,3 +79,6 @@
 [submodule "vendor/theseer/tokenizer"]
     path = vendor/theseer/tokenizer
     url = https://github.com/theseer/tokenizer.git
+[submodule "vendor/sebastian/type"]
+path = vendor/sebastian/type
+url = https://github.com/sebastianbergmann/type.git
