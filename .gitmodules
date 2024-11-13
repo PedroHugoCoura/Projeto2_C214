@@ -1,0 +1,12 @@
+[submodule "vendor/myclabs/deep-copy"]
+    path = vendor/myclabs/deep-copy
+    url = https://github.com/myclabs/DeepCopy.git
+[submodule "vendor/nikic/php-parser"]
+    path = vendor/nikic/php-parser
+    url = https://github.com/nikic/PHP-Parser.git
+[submodule "vendor/phar-io/manifest"]
+    path = vendor/phar-io/manifest
+    url = https://github.com/phar-io/manifest.git
+[submodule "vendor/phar-io/version"]
+    path = vendor/phar-io/version
+    url = https://github.com/phar-io/version.git
