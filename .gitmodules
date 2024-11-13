@@ -22,3 +22,6 @@
 [submodule "vendor/phpunit/php-text-template"]
     path = vendor/phpunit/php-text-template
     url = https://github.com/sebastianbergmann/php-text-template.git
+[submodule "vendor/phpunit/php-timer"]
+path = vendor/phpunit/php-timer
+url = https://github.com/sebastianbergmann/php-timer.git
