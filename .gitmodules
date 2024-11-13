@@ -23,11 +23,59 @@
     path = vendor/phpunit/php-text-template
     url = https://github.com/sebastianbergmann/php-text-template.git
 [submodule "vendor/phpunit/php-timer"]
-path = vendor/phpunit/php-timer
-url = https://github.com/sebastianbergmann/php-timer.git
+    path = vendor/phpunit/php-timer
+    url = https://github.com/sebastianbergmann/php-timer.git
 [submodule "vendor/phpunit/phpunit"]
     path = vendor/phpunit/phpunit
     url = https://github.com/sebastianbergmann/phpunit.git
 [submodule "vendor/sebastian/cli-parser"]
     path = vendor/sebastian/cli-parser
     url = https://github.com/sebastianbergmann/cli-parser.git
+[submodule "vendor/sebastian/code-unit"]
+    path = vendor/sebastian/code-unit
+    url = https://github.com/sebastianbergmann/code-unit.git
+[submodule "vendor/sebastian/code-unit-reverse-lookup"]
+    path = vendor/sebastian/code-unit-reverse-lookup
+    url = https://github.com/sebastianbergmann/code-unit-reverse-lookup.git
+[submodule "vendor/sebastian/comparator"]
+    path = vendor/sebastian/comparator
+    url = https://github.com/sebastianbergmann/comparator.git
+[submodule "vendor/sebastian/complexity"]
+    path = vendor/sebastian/complexity
+    url = https://github.com/sebastianbergmann/complexity.git
+[submodule "vendor/sebastian/diff"]
+    path = vendor/sebastian/diff
+    url = https://github.com/sebastianbergmann/diff.git
+[submodule "vendor/sebastian/environment"]
+    path = vendor/sebastian/environment
+    url = https://github.com/sebastianbergmann/environment.git
+[submodule "vendor/sebastian/exporter"]
+    path = vendor/sebastian/exporter
+    url = https://github.com/sebastianbergmann/exporter.git
+[submodule "vendor/sebastian/global-state"]
+    path = vendor/sebastian/global-state
+    url = https://github.com/sebastianbergmann/global-state.git
+[submodule "vendor/sebastian/lines-of-code"]
+    path = vendor/sebastian/lines-of-code
+    url = https://github.com/sebastianbergmann/lines-of-code.git
+[submodule "vendor/sebastian/object-enumerator"]
+    path = vendor/sebastian/object-enumerator
+    url = https://github.com/sebastianbergmann/object-enumerator.git
+[submodule "vendor/sebastian/object-reflector"]
+    path = vendor/sebastian/object-reflector
+    url = https://github.com/sebastianbergmann/object-reflector.git
+[submodule "vendor/sebastian/recursion-context"]
+    path = vendor/sebastian/recursion-context
+    url = https://github.com/sebastianbergmann/recursion-context.git
+[submodule "vendor/sebastian/resource-operations"]
+    path = vendor/sebastian/resource-operations
+    url = https://github.com/sebastianbergmann/resource-operations.git
+[submodule "vendor/sebastian/type"]
+    path = vendor/sebastian/type
+    url = https://github.com/sebastianbergmann/type.git
+[submodule "vendor/sebastian/version"]
+    path = vendor/sebastian/version
+    url = https://github.com/sebastianbergmann/version.git
+[submodule "vendor/theseer/tokenizer"]
+    path = vendor/theseer/tokenizer
+    url = https://github.com/theseer/tokenizer.git
