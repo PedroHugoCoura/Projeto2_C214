@@ -43,5 +43,6 @@ Rode o comando para atualizar o psr-4
 ### Por fim
  Rode o comando para executar os testes
  - `php vendor\\bin\\phpunit tests\\IMCTest.php`
+ 
  Para gerar o relatório de testes em XML
  - `php vendor/bin/phpunit --log-junit reports/report.xml tests/IMCTest.php`
