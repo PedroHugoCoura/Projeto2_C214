@@ -27,7 +27,7 @@ jobs:
         run: composer clear-cache
 
       - name: Install dependencies
-        run: composer install --no-progress --prefer-dist
+        run: composer install
 
       - name: Verify vendor folder
         run: ls -la vendor/
