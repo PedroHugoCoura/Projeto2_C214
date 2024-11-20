@@ -13,22 +13,18 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # 1. Checkout do código
       - name: Checkout code
         uses: actions/checkout@v3
 
-      # 2. Configurar o PHP
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-version: '8.1' # Escolha a versão do PHP
-          extensions: mbstring, xml, xdebug # Extensões necessárias para o PHPUnit
-          coverage: xdebug # Ativa cobertura de código
+          php-version: '8.2.12' 
+          extensions: mbstring, xml, xdebug 
+          coverage: xdebug
 
-      # 3. Instalar dependências do Composer
       - name: Install dependencies
         run: composer install --no-progress --no-suggest --prefer-dist
 
-      # 4. Rodar os testes
       - name: Run PHPUnit
         run: php vendor/bin/phpunit --log-junit report.xml
