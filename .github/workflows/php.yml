@@ -1,4 +1,4 @@
-name: CI/CD Pipeline
+name: Run PHPUnit Tests
 
 on:
   push:
@@ -9,68 +9,26 @@ on:
       - main
 
 jobs:
-  test:
-    name: Run PHPUnit Tests
+  phpunit-tests:
     runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
 
-      - name: Set up PHP
+    steps:
+      # 1. Checkout do código
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # 2. Configurar o PHP
+      - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-version: '8.14.2'
+          php-version: '8.1' # Escolha a versão do PHP
+          extensions: mbstring, xml, xdebug # Extensões necessárias para o PHPUnit
+          coverage: xdebug # Ativa cobertura de código
 
-      - name: Install dependenciess
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y unzip
-          sudo apt install php libapache2-mod-php php-cli php-mbstring php-xml php-curl php-zip php-gd
-          php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
-          php composer-setup.php
-          php -r "unlink('composer-setup.php');"
-          composer clear-cache
-          composer require --dev phpunit/phpunit
-          composer install -vvv
-          composer update --with-all-dependencies
-
-      - name: Run PHPUnit tests
-        run: |
-          ./vendor/bin/phpunit ./tests/IMCtest.php --log-junit test-report.xml
-
-      - name: Upload test reports as artifact
-        uses: actions/upload-artifact@v3
-        with:
-          name: phpunit-test-report
-          path: test-report.xml
-
-  build:
-    name: Package Software
-    runs-on: ubuntu-latest
-    # needs: test 
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-
-      - name: Set up PHP
-        uses: shivammathur/setup-php@v2
-        with:
-          php-version: '8.12.2'
-
+      # 3. Instalar dependências do Composer
       - name: Install dependencies
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y unzip
-          curl -sS https://getcomposer.org/installer | php
-          composer install
+        run: composer install --no-progress --no-suggest --prefer-dist
 
-      - name: Build and package the software
-        run: |
-          # Comando de empacotamento (ajuste conforme necessário)
-          tar -czvf my-software-package.tar.gz ./src
-
-      - name: Upload software package as artifact
-        uses: actions/upload-artifact@v3
-        with:
-          name: my-software-package
-          path: my-software-package.tar.gz
+      # 4. Rodar os testes
+      - name: Run PHPUnit
+        run: php vendor/bin/phpunit --log-junit report.xml
