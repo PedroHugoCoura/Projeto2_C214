@@ -23,8 +23,11 @@ jobs:
           extensions: mbstring, xml, xdebug 
           coverage: xdebug
 
+      - name: Update Composer dependencies
+        run: composer update --no-progress --prefer-dist
+
       - name: Install dependencies
-        run: composer install --no-progress --no-suggest --prefer-dist
+        run: composer install --no-progress --prefer-dist
 
       - name: Run PHPUnit
         run: php vendor/bin/phpunit --log-junit report.xml
