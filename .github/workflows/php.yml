@@ -33,7 +33,7 @@ jobs:
         run: ls -la vendor/phpunit/phpunit
 
       - name: Run PHPUnit
-        run: php vendor\\bin\\phpunit tests\\IMCTest.php
+        run: php vendor/bin/phpunit tests/IMCTest.php
       
       - name: Publicar resultados dos testes
         uses: actions/upload-artifact@v3
