@@ -37,7 +37,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: junit-report
-          path: junit-report.xml
+          path: reports/report.xml
   
       - name: Verificar se os testes passaram
         run: |
