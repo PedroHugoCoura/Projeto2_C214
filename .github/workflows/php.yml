@@ -27,7 +27,7 @@ jobs:
         run: composer clear-cache
 
       - name: Install dependencies
-        run: composer install --no-progress --prefer-dist
+        run:  curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
       - name: Verify vendor folder
         run: ls -la vendor/phpunit/phpunit
