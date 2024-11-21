@@ -41,7 +41,7 @@ jobs:
   
       - name: Verificar se os testes passaram
         run: |
-          if grep -q '<failure' junit-report.xml; then
+          if grep -q '<failure' report.xml; then
             echo "Testes falharam!"
             exit 1
           else
