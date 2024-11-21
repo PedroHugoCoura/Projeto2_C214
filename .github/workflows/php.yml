@@ -32,5 +32,18 @@ jobs:
       - name: Verify vendor folder
         run: ls -la vendor/phpunit/phpunit
 
-      - name: Run PHPUnit
-        run: php vendor/bin/phpunit --log-junit reports/report.xml tests/IMCTest.php
+      
+      - name: Publicar resultados dos testes
+        uses: actions/upload-artifact@v2
+        with:
+          name: junit-report
+          path: junit-report.xml
+  
+      - name: Verificar se os testes passaram
+        run: |
+          if grep -q '<failure' junit-report.xml; then
+            echo "Testes falharam!"
+            exit 1
+          else
+            echo "Testes passaram com sucesso!"
+          fi
