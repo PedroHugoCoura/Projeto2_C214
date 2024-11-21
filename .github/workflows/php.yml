@@ -45,5 +45,5 @@ jobs:
             echo "Testes falharam!"
             exit 1
           else
-            echo "Testes passaram com sucesso!"
+            echo "Testes passaram com sucesso!😉"
           fi
