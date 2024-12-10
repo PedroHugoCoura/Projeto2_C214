@@ -4,12 +4,12 @@ on:
   push:
     branches:
       - main
+    tags:
+      - 'v*'
   pull_request:
     branches:
       - main
-  push:
-    tags:
-      - "*"
+
 
 jobs:
   install-dependencies:
