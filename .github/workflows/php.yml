@@ -38,6 +38,10 @@ jobs:
 
       - name: Run PHPUnit Tests
         run: |
+          mkdir reports
+          cd reports
+          touch report.xml
+          cd ..
           php vendor/bin/phpunit --log-junit tests/report.xml tests/IMCTest.php
 
       - name: Publicar resultados dos testes
@@ -48,7 +52,7 @@ jobs:
 
       - name: Verificar se os testes passaram
         run: |
-          if grep -q '<failure' tests/report.xml; then
+          if grep -q '<failure' reports/report.xml; then
             echo "Testes falharam!"
             exit 1
           else
