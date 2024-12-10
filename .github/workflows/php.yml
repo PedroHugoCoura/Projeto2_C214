@@ -21,7 +21,15 @@ jobs:
         with:
           php-version: '8.2'
           extensions: mbstring, xml, xdebug
-          coverage: xdebug  
+          coverage: xdebug
+
+      - name: Cache Composer dependencies
+        uses: actions/cache@v3
+        with:
+          path: vendor
+          key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-composer-
 
       - name: Install Composer
         run: curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
@@ -35,7 +43,15 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
-        
+
+      - name: Cache Composer dependencies
+        uses: actions/cache@v3
+        with:
+          path: vendor
+          key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-composer-
+
       - name: Verify vendor folder
         run: ls -la vendor
 
@@ -43,7 +59,7 @@ jobs:
         run: |
           mkdir -p reports
           php vendor/bin/phpunit --log-junit reports/report.xml tests/IMCtest.php
-      
+
       - name: Publish test results
         uses: actions/upload-artifact@v4
         with:
@@ -58,6 +74,7 @@ jobs:
           else
             echo "Tests passed successfully!😉"
           fi
+
   package-project:
     runs-on: ubuntu-latest
     needs: phpunit-tests
