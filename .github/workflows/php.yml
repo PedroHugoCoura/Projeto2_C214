@@ -37,6 +37,9 @@ jobs:
 
       - name: Verify vendor folder
         run: ls -la vendor/phpunit/phpunit
+        
+      - name: Give execute permissions to PHPUnit
+        run: chmod +x vendor/bin/phpunit
 
       - name: Create reports directory
         run: mkdir -p reports
