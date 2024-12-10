@@ -33,10 +33,17 @@ jobs:
     needs: install-dependencies
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v3
 
       - name: Verify vendor folder
         run: ls -la vendor/phpunit/phpunit
+
+      - name: Create reports directory
+        run: mkdir -p reports
+
+      - name: Run PHPUnit Tests
+        run: |
+          vendor/bin/phpunit --log-junit reports/report.xml
       
       - name: Publicar resultados dos testes
         uses: actions/upload-artifact@v3
