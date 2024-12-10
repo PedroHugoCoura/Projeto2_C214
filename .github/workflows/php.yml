@@ -37,7 +37,7 @@ jobs:
 
       - name: Verify vendor folder
         run: ls -la vendor/phpunit/phpunit
-        
+
       - name: Give execute permissions to PHPUnit
         run: chmod +x vendor/bin/phpunit
 
@@ -47,6 +47,13 @@ jobs:
       - name: Run PHPUnit Tests
         run: |
           vendor/bin/phpunit --log-junit reports/report.xml
+
+      - name: Verify reports directory and file
+        run: |
+          echo "Conteúdo da pasta 'reports':"
+          ls -la reports
+          echo "Verificando se o arquivo report.xml existe:"
+          ls -la reports/report.xml
       
       - name: Publicar resultados dos testes
         uses: actions/upload-artifact@v3
