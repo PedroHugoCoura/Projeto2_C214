@@ -46,3 +46,12 @@ jobs:
           else
             echo "Testes passaram com sucesso!😉"
           fi
+
+      - name: Package Project
+        run: |
+          mkdir build
+          cp -R . build/
+          cd build
+          rm -rf tests .git .github
+          zip -r ../php-project.zip .
+          cd ..
