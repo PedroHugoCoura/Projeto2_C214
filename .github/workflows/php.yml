@@ -42,13 +42,13 @@ jobs:
           cd reports
           touch report.xml
           cd ..
-          php vendor/bin/phpunit --log-junit tests/report.xml tests/IMCTest.php
+          php vendor/bin/phpunit --log-junit reports/report.xml tests/IMCTest.php
 
       - name: Publicar resultados dos testes
         uses: actions/upload-artifact@v3
         with:
           name: junit-report
-          path: tests/report.xml
+          path: reports/report.xml
 
       - name: Verificar se os testes passaram
         run: |
