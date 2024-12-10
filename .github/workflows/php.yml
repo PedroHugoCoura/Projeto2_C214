@@ -23,13 +23,13 @@ jobs:
           extensions: mbstring, xml, xdebug
           coverage: xdebug
 
-      - name: Cache Composer dependencies
-        uses: actions/cache@v3
-        with:
-          path: vendor
-          key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-composer-
+      # - name: Cache Composer dependencies
+      #   uses: actions/cache@v3
+      #   with:
+      #     path: vendor
+      #     key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
+      #     restore-keys: |
+      #       ${{ runner.os }}-composer-
 
       - name: Install Composer
         run: curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
@@ -65,8 +65,8 @@ jobs:
         with:
           name: vendor-folder
 
-      - name: Verify vendor folder
-        run: ls -la vendor
+      # - name: Verify vendor folder
+      #   run: ls -la vendor
 
       - name: Run PHPUnit Tests
         run: |
