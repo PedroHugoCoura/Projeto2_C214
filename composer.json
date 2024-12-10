@@ -6,7 +6,7 @@
         }
     },
     "require-dev": {
-        "phpunit/phpunit": "*",
+        "phpunit/phpunit": "11",
         "sebastian/type": "5.1.0",
         "myclabs/deep-copy": "*"
     }
