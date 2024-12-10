@@ -38,17 +38,17 @@ jobs:
 
       - name: Run PHPUnit Tests
         run: |
-          php vendor/bin/phpunit --log-junit test/report.xml tests/IMCTest.php
+          php vendor/bin/phpunit --log-junit tests/report.xml tests/IMCTest.php
 
       - name: Publicar resultados dos testes
         uses: actions/upload-artifact@v3
         with:
           name: junit-report
-          path: test/report.xml
+          path: tests/report.xml
 
       - name: Verificar se os testes passaram
         run: |
-          if grep -q '<failure' test/report.xml; then
+          if grep -q '<failure' tests/report.xml; then
             echo "Testes falharam!"
             exit 1
           else
