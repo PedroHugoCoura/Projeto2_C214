@@ -26,19 +26,19 @@ jobs:
       - name: Clear Composer cache
         run: composer clear-cache
 
+      - name: Install Composer
+        run: curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+
       - name: Install dependencies
-        run:  curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+        run: composer install --prefer-dist
 
-      # - name: Verify vendor folder
-      #   run: ls -la vendor/phpunit/phpuni
+      - name: Verify vendor folder
+        run: ls -la vendor
 
-      # - name: Run PHPUnit Tests
-      #   run: |
-      #     mkdir reports
-      #     cd reports
-      #     touch report.xml
-      #     cd ..  
-      #     php vendor/bin/phpunit --log-junit reports/report.xml tests/IMCTest.php
+      - name: Run PHPUnit Tests
+        run: |
+          mkdir -p reports
+          php vendor/bin/phpunit --log-junit reports/report.xml tests/IMCTest.php
 
       - name: Publish test results
         uses: actions/upload-artifact@v4
