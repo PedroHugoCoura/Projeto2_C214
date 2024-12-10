@@ -70,16 +70,3 @@ jobs:
           rm -rf tests .git .github
           zip -r ../php-project.zip .
           cd ..
-
-  download-artifact:
-    runs-on: ubuntu-latest
-    needs: phpunit-tests
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-
-      - name: Baixar artefato de testes
-        uses: actions/download-artifact@v3
-        with:
-          name: junit-report
-          path: ./artifacts
