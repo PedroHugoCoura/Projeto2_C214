@@ -38,7 +38,7 @@ jobs:
         run: composer install --prefer-dist
 
       - name: Upload vendor folder
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v3
         with:
           name: vendor-folder
           path: vendor
@@ -61,7 +61,7 @@ jobs:
         run: php --version
 
       - name: Download vendor folder
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v3
         with:
           name: vendor-folder
 
