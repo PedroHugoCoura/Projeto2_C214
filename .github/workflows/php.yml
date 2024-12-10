@@ -22,13 +22,19 @@ jobs:
           extensions: mbstring, xml, xdebug
           coverage: xdebug
 
+      - name: Cache Composer dependencies
+        uses: actions/cache@v3
+        with:
+          path: ~/.composer/cache
+          key: ${{ runner.os }}-composer-${{ hashFiles('composer.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-composer-
+
       - name: Clear Composer cache
         run: composer clear-cache
 
       - name: Install dependencies
-        run: |
-          curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
-          composer install
+        run: composer install --prefer-dist
 
   phpunit-tests:
     runs-on: ubuntu-latest
@@ -42,22 +48,22 @@ jobs:
           mkdir reports
           cd reports
           touch report.xml
-          cd ..
+          cd ..  
           php vendor/bin/phpunit --log-junit reports/report.xml tests/IMCTest.php
 
-      - name: Publicar resultados dos testes
+      - name: Publish test results
         uses: actions/upload-artifact@v4
         with:
           name: junit-report
           path: reports/report.xml
 
-      - name: Verificar se os testes passaram
+      - name: Verify tests passed
         run: |
           if grep -q '<failure' reports/report.xml; then
-            echo "Testes falharam!"
+            echo "Tests failed!"
             exit 1
           else
-            echo "Testes passaram com sucesso!😉"
+            echo "Tests passed successfully!😉"
           fi
 
   package-project:
