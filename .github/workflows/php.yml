@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v3
 
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
@@ -50,14 +50,7 @@ jobs:
 
       - name: Run PHPUnit Tests
         run: |
-          php vendor/bin/phpunit --log-junit reports/report.xml tests/IMCTest.php
-
-      - name: Verify reports directory and file
-        run: |
-          echo "Conteúdo da pasta 'reports':"
-          ls -la reports
-          echo "Verificando se o arquivo report.xml existe:"
-          ls -la reports/report.xml
+          php vendor/bin/phpunit --log-junit reports/ tests/IMCTest.php
       
       - name: Publicar resultados dos testes
         uses: actions/upload-artifact@v3
@@ -79,7 +72,7 @@ jobs:
     needs: phpunit-tests
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v3
 
       - name: Package Project
         run: |
