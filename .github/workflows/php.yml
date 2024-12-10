@@ -42,7 +42,7 @@ jobs:
 
       - name: Run PHPUnit Tests
         run: |
-          composer phpunit --log-junit reports/test-report.xml tests/IMCTest.php
+          php vendor/bin/phpunit --log-junit reports/report.xml tests/IMCTest.php
 
       - name: Publicar resultados dos testes
         uses: actions/upload-artifact@v3
