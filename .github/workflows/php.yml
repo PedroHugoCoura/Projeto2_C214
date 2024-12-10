@@ -31,7 +31,7 @@ jobs:
 
   phpunit-tests:
     runs-on: ubuntu-latest
-    needs: install-dependencies #dependencias
+    needs: install-dependencies
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
