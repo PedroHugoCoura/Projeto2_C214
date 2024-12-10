@@ -36,23 +36,19 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Install dependencies
-        run: |
-          curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
-
       - name: Run PHPUnit Tests
         run: |
-          php vendor/bin/phpunit --log-junit reports/report.xml tests/IMCTest.php
+          php vendor/bin/phpunit --log-junit test/report.xml tests/IMCTest.php
 
       - name: Publicar resultados dos testes
         uses: actions/upload-artifact@v3
         with:
           name: junit-report
-          path: reports/test-report.xml
+          path: test/report.xml
 
       - name: Verificar se os testes passaram
         run: |
-          if grep -q '<failure' reports/test-report.xml; then
+          if grep -q '<failure' test/report.xml; then
             echo "Testes falharam!"
             exit 1
           else
