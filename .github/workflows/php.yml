@@ -28,8 +28,7 @@ jobs:
       - name: Install dependencies
         run: |
           curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
-          composer install
-          
+
       - name: List installed Composer packages
         run: composer show
 
