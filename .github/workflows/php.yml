@@ -9,8 +9,9 @@ on:
       - main
 
 jobs:
-  install-dependencies:
+  phpunit-tests:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -28,8 +29,8 @@ jobs:
       - name: Install dependencies
         run:  curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
-      - name: Verify vendor folder
-        run: ls -la vendor/phpunit/phpuni
+      # - name: Verify vendor folder
+      #   run: ls -la vendor/phpunit/phpuni
 
       # - name: Run PHPUnit Tests
       #   run: |
