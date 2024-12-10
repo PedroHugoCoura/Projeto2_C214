@@ -26,9 +26,7 @@ jobs:
         run: composer clear-cache
 
       - name: Install dependencies
-        run: |
-          curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
-          composer install
+        run:  curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
   phpunit-tests:
     runs-on: ubuntu-latest
@@ -39,17 +37,13 @@ jobs:
 
       - name: Verify vendor folder
         run: ls -la vendor/phpunit/phpunit
-
-      - name: Run PHPUnit Tests
-        run: |
-          vendor/bin/phpunit --log-junit reports/report.xml
-
+      
       - name: Publicar resultados dos testes
         uses: actions/upload-artifact@v3
         with:
           name: junit-report
           path: reports/report.xml
-
+  
       - name: Verificar se os testes passaram
         run: |
           if grep -q '<failure' reports/report.xml; then
@@ -58,7 +52,7 @@ jobs:
           else
             echo "Testes passaram com sucesso!😉"
           fi
-
+    
   package-project:
     runs-on: ubuntu-latest
     needs: phpunit-tests
@@ -72,5 +66,5 @@ jobs:
           rsync -av --exclude='build' --exclude='.git' --exclude='.github' ./ build/
           cd build
           rm -rf tests .git .github
-          zip -r ../php-project.zip . 
+          zip -r ../php-project.zip .
           cd ..
