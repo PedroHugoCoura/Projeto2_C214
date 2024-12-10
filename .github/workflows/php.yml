@@ -98,7 +98,16 @@ jobs:
           zip -r ../php-project.zip .
           cd ..
        
+     - name: Create Git Tag
+        run: |
+          TAG_NAME="v$(date +'%Y%m%d%H%M%S')"
+          git config user.name "PedroHugoCoura"
+          git config user.email "pedro.coura2803@gmail.com"
+          git tag $TAG_NAME
+          git push origin $TAG_NAME
+       
       - name: Upload Artifact
+        if: startsWith(github.ref, 'refs/tags/')
         uses: actions/upload-artifact@v3
         with:
           name: ${{ github.ref_name }}
