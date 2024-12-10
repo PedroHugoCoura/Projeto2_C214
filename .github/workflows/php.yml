@@ -50,7 +50,7 @@ jobs:
 
       - name: Run PHPUnit Tests
         run: |
-          vendor/bin/phpunit --log-junit reports/report.xml
+          composer exec phpunit -- --log-junit reports/report.xml
 
       - name: Verify reports directory and file
         run: |
