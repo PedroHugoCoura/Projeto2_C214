@@ -36,12 +36,6 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Give execute permissions to PHPUnit
-        run: chmod +x vendor/bin/phpunit
-
-      - name: Create reports directory
-        run: mkdir -p reports
-
       - name: Run PHPUnit Tests
         run: |
           php vendor/bin/phpunit --log-junit reports/test-report.xml tests/IMCTest.php
