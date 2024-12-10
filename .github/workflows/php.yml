@@ -25,6 +25,12 @@ jobs:
 
       - name: Clear Composer cache
         run: composer clear-cache
+      
+      - name: Remove vendor directory and lock file
+        run: |
+          rm -rf vendor
+          rm composer.lock
+      
 
       - name: Install Composer
         run: curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
