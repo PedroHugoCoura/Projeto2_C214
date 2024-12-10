@@ -50,7 +50,7 @@ jobs:
       - name: Package Project
         run: |
           mkdir build
-          cp -R . build/
+          rsync -av --exclude='build' ./ build/
           cd build
           rm -rf tests .git .github
           zip -r ../php-project.zip .
