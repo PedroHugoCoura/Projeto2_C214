@@ -29,11 +29,12 @@ jobs:
         run: |
           curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
-      - name: List installed Composer packages
-        run: composer show
-
-      - name: Verify vendor folder
-        run: ls -la vendor/phpunit/phpunit
+  phpunit-tests:
+    runs-on: ubuntu-latest
+    needs: install-dependencies
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
 
       - name: Give execute permissions to PHPUnit
         run: chmod +x vendor/bin/phpunit
@@ -44,8 +45,6 @@ jobs:
       - name: Run PHPUnit Tests
         run: |
           php vendor/bin/phpunit --log-junit reports/test-report.xml tests/IMCTest.php
-      - name: Verificar se o relatório foi gerado
-        run: ls -la reports
 
       - name: Publicar resultados dos testes
         uses: actions/upload-artifact@v3
@@ -61,6 +60,13 @@ jobs:
           else
             echo "Testes passaram com sucesso!😉"
           fi
+
+  package-project:
+    runs-on: ubuntu-latest
+    needs: phpunit-tests
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
 
       - name: Package Project
         run: |
