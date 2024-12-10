@@ -56,11 +56,11 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: junit-report
-          path: reports/report.xml
+          path: reports/
   
       - name: Verificar se os testes passaram
         run: |
-          if grep -q '<failure' reports/report.xml; then
+          if grep -q '<failure' reports/; then
             echo "Testes falharam!"
             exit 1
           else
