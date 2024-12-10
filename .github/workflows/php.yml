@@ -51,6 +51,9 @@ jobs:
       - name: Run PHPUnit Tests
         run: |
           php vendor/bin/phpunit --log-junit reports/test-report.xml tests/IMCTest.php
+          
+      - name: Verificar se o relatório foi gerado
+        run: ls -la reports
 
       - name: Publicar resultados dos testes
         uses: actions/upload-artifact@v3
