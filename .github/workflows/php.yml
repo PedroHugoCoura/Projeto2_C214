@@ -44,7 +44,7 @@ jobs:
       - name: Run PHPUnit Tests
         run: |
           mkdir -p reports
-          php vendor/bin/phpunit --log-junit reports/report.xml tests/IMCTest.php
+          php vendor/bin/phpunit --log-junit reports/report.xml tests/IMCtest.php
 
       - name: Publish test results
         uses: actions/upload-artifact@v4
