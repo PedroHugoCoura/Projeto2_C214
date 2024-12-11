@@ -9,7 +9,7 @@ function calcularIMC($peso, $altura) {
     }
     return 0;
 }
-
+# teste
 function classificarIMC($imc) {
     if ($imc < 18.5) return "Abaixo do peso";
     if ($imc >= 18.5 && $imc < 24.9) return "Peso normal";
